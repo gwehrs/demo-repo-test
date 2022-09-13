@@ -12,3 +12,11 @@ updates:
     directory: "/" 
     schedule:
       interval: "weekly"
+  - package-ecosystem: "build.gradle" 
+    directory: "/" 
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "build.gradle.kts" 
+    directory: "/" 
+    schedule:
+      interval: "weekly"
