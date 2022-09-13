@@ -1,0 +1,6 @@
+version: 2
+updates:
+  - package-ecosystem: "bundler" "cargo" "composer" "docker" "mix" "elm" "gitsubmodule" "gomod" "github-actions" "gradle" "maven" "npm" "nuget" "pip" "pub" "terraform"
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "weekly"
