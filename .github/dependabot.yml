@@ -5,15 +5,10 @@ updates:
     schedule:
       interval: "weekly"
       
-   - package-ecosystem: "yarn" 
+  - package-ecosystem: "yarn" 
     directory: "/" 
     schedule:
     interval: "weekly"
-    
-   - package-ecosystem: "github-actions" 
-    directory: "/" 
-    schedule:
-      interval: "weekly"
       
    - package-ecosystem: "composer" 
     directory: "/" 
