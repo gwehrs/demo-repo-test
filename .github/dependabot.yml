@@ -16,11 +16,8 @@ updates:
     directory: "/" 
     schedule:
       interval: "weekly"
-  - package-ecosystem: "sbt" 
-    directory: "/" 
+  - package-ecosystem: "npm" 
+    directory: "/app.js" 
     schedule:
       interval: "weekly"
-  - package-ecosystem: "rust" 
-    directory: "/" 
-    schedule:
-      interval: "weekly"
+
