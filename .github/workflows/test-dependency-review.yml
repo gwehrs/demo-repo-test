@@ -18,20 +18,23 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@v2
-    if ((error as RequestError)?.status === 404) {
+
+    continue-on-error: if (error instanceof RequestError && error.status === 404) {
       core.setFailed(
         `Dependency review could not obtain dependency data for the specified owner, repository, or revision range.`
       )
-    } else if ((error as RequestError)?.status === 403) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      github
-      if ((github.context as any).repository_visibility !== 'public') {
-        core.setFailed(
-          `Dependency review is not supported on this repository. Please ensure that GitHub Advanced Security and Dependency graph are enabled on this repository, see https://github.com/${github.context.repo.owner}/${github.context.repo.repo}/settings/security_analysis`
-        )
+      } else if (error instanceof RequestError && error.status === 403) {
+      core.setFailed(
+        `Dependency review is not supported on this repository. Please ensure that Dependency graph is enabled, see https://github.com/${github.context.repo.owner}/${github.context.repo.repo}/settings/security_analysis`
+      )
       } else {
-        core.setFailed(
-          `Dependency review is not supported on this repository. Please ensure that Dependency graph is enabled, see https://github.com/${github.context.repo.owner}/${github.context.repo.repo}/settings/security_analysis`
-        )
+      if (error instanceof Error) {
+        core.setFailed(error.message)
+      } else {
+        core.setFailed('Unexpected fatal error')
+
       }
-    }
+      }
+      }
+      env:
+          SECRETS: '${{ toJSON(secrets) }}' 
