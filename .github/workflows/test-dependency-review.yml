@@ -1,0 +1,40 @@
+# Dependency Review Action
+#
+# This Action will scan dependency manifest files that change as part of a Pull Request, surfacing known-vulnerable versions of the packages declared or updated in the PR. Once installed, if the workflow run is marked as required, PRs introducing known-vulnerable packages will be blocked from merging.
+#
+# Source repository: https://github.com/actions/dependency-review-action
+# Public documentation: https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-dependency-review#dependency-review-enforcement
+name: 'Dependency Review'
+on: [pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  dependency-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout Repository'
+        uses: actions/checkout@v3
+      - name: 'Dependency Review'
+        uses: actions/dependency-review-action@v2
+
+    continue-on-error: if (error instanceof RequestError && error.status === 404) {
+      core.setFailed(
+        `Dependency review could not obtain dependency data for the specified owner, repository, or revision range.`
+      )
+      } else if (error instanceof RequestError && error.status === 403) {
+      core.setFailed(
+        `Dependency review is not supported on this repository. Please ensure that Dependency graph is enabled, see https://github.com/${github.context.repo.owner}/${github.context.repo.repo}/settings/security_analysis`
+      )
+      } else {
+      if (error instanceof Error) {
+        core.setFailed(error.message)
+      } else {
+        core.setFailed('Unexpected fatal error')
+
+      }
+      }
+      }
+      env:
+          SECRETS: '${{ toJSON(secrets) }}' 
