@@ -1,7 +1,6 @@
 
-./.github/workflows/Shared Workflow - Build Blocker
+.github/workflows/dependency-review.yml
 
-{gwehrs}/{demo-repo-test}/Shared Workflow - Build Blocker@v1
 
 
 # Dependency Review Action
