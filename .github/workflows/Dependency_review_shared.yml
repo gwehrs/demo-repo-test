@@ -1,0 +1,21 @@
+name: reusable-workflow-caller
+
+on:
+  push:
+    branches: none # [main]
+  pull_request:
+    branches: nones # [main]
+    
+# Allows you to run this workflow manually from actions tab
+
+  workflow_dispatch:
+
+jobs:
+  call-workflow-A:
+    uses: gwehrs/demo-repo-test/.github/workflows/dependency-review.yml@v1
+    with:
+      username: gwehrs
+    secrets:
+        token: ${{ secrets.TOKEN }}
+        
+    
