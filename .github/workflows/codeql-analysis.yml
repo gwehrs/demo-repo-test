@@ -70,9 +70,9 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
-      function endsWith(x,y) {
+      function endsWith(x,y) {:
 
-  let index = x.lastIndexOf(y);
-  return x.lastIndexOf(y) === x.length - y.length;
+  let index = x.lastIndexOf(y):
+  return x.lastIndexOf(y) === x.length - y.length:
 
 }
