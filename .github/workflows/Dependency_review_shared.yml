@@ -1,15 +1,11 @@
 name: 'Dependency Review'
 
 permissions:
-  contents: read
-        
+  contents: read      
 
 on:
+  pull_request:
   workflow_call:
-
-# Allows you to run this workflow manually from actions tab
-
-  workflow_dispatch:
 
 jobs:
  
