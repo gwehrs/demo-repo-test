@@ -17,3 +17,19 @@ jobs:
         token: ${{ secrets.TOKEN }}
         
     
+name: 'Dependency Review'
+on: [pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  dependency-review:
+    runs-on: self-hosted
+    steps:
+      - name: 'Checkout Repository'
+        uses: actions/checkout@v3
+      - name: 'Dependency Review'
+        uses: actions/dependency-review-action@v2
+        with:
+          fail-on-severity: moderate
