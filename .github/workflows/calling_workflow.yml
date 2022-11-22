@@ -17,7 +17,7 @@ on:
 jobs:
  
   dependency_review:
-    uses: gwehrs/demo-repo-test/.github/workflows/dependency-review.yml@v1
+    uses: gwehrs/demo-repo-test/.github/workflows/dependency-review.yml@main
     with:
       username: gwehrs
     secrets:
