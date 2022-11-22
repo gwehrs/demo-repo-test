@@ -18,7 +18,4 @@ jobs:
  
   dependency_review:
     uses: gwehrs/demo-repo-test/.github/workflows/dependency-review.yml@main
-    with:
-      username: gwehrs
-    secrets:
-        token: ${{ secrets.TOKEN }}
+    
