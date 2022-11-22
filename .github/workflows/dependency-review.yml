@@ -18,8 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout Repository'
-        uses: actions/checkout@v3
+        uses: gwehrs/demo-repo/.github/actions/checkout@v3
       - name: 'Dependency Review'
-        uses: actions/dependency-review-action@v2
+        uses: gwehrs/demo-repo/.github/actions/dependency-review-action@v2
         with:
           fail-on-severity: moderate
