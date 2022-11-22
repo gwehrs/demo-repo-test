@@ -9,7 +9,7 @@ on:
 
 jobs:
  
-  call-workflow:
+  dependency_reviw:
     uses: gwehrs/demo-repo-test/.github/workflows/dependency-review.yml@v1
     with:
       username: gwehrs
